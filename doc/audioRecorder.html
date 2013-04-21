@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>FlashWavRecorder2</title>
+    <link href="http://webfoundation.org/stylemt/base.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      code, pre { background-color: #fdd }
+    </style>
+  </head>
+  <body>
+    <h1>FlashWavRecorder2</h1>
+    <p>This page documents the audio recorder used in the Tabale application. It explains how to reuse it in other web applications.</p>
+
+    <h2>Intro</h2>
+
+    <p>This recorder extends <a href="https://github.com/cykod/FlashWavRecorder">FlashWavRecorder</a> to allow extra functionality: mainly multiple recorders on a page and  multi-language interfaces.</p>
+
+
+    <h2>Installing</h2>
+
+    <h3>Requirements</h3>
+
+    <p><a href="jquery.com">jQuery</a> is needed.</p>
+
+    <h3>Files</h3>
+
+    <p>Place the following files:</p>
+
+    <ul>
+      <li><a href="../js/recorders.js">recorders.js</a> in your application's javascript directory.</li>
+      <li><a href="../js/swfobject.js">swfobject.js</a>, too.</li>
+      <li><a href="../recorder.swf">recorder.swf</a> in your application's home directory</li>
+      <li><a href="../img/play.png">play.png</a>, <a href="../img/record.png">record.png</a>, <a href="../img/stop.png">stop.png</a>, <a href="../img/upload.png">upload.png</a> in a directory.</li>
+    </ul>
+
+    <h2>Embedding in your web app</h2>
+
+<h3>In the HTML</h3>
+
+<p>In order to indicate where a recorder should be inserted, an empty element with an <code>id</code> attribute starting with <code>recorder_</code> is added:</p>
+
+<pre>&lt;div id="recorder_XYZ"&gt;&lt;/div&gt;</pre>
+
+<p>And somewhere in the HTML:</p>
+<pre>
+  &lt;script src="js/jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;script src="js/swfobject.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;script src="js/recorders.js" type="text/javascript"&gt;&lt;/script&gt;
+</pre>
+    
+<h3>In the JS code</h3>
+
+<pre>
+recorder = new Recorder(XYZ, {
+  upload_url: "http://www.example.com/upload.php"
+  imageDir: "images",
+  messages: myMessages
+});</pre>
+
+<p>See below for how to set the parameters</p>
+
+<h2>Parameters</h2>
+
+<p>As shown above, the <code>Recorder</code> class is instantiated with two parameters</p>
+<ol>
+  <li>a string that indicates where to insert the recorder in your markup. For example, if set to <code>XYZ</code>, the recorder will be inserted in the element with id <code>recorder_XYZ</code></li>
+  <li>An object containing the other parameters:
+    <ul>
+      <li><code>upload_url</code>: the URL at which the wav file will be uploaded, using a POST request with the arguments sent as multipart/post-data (like file upload forms). The POST parameters are:
+        <ul>
+          <li><code>upload_dir</code>: directory to put the uploaded wav on the server</li>
+          <li><code>uploadfile</code>: the WAV data</li>
+        </ul>
+        See below for some sample server-side code.
+      </li>
+      <li><code>imageDir</code>: the location of the image files (play.png, pause.png, record.png, upload.png)</li>
+      <li><code>messages</code>: an array containing the human-readable messages that the recorder will display to the user. For instance:
+        <pre>     {"readyToRecord": "Prêt à enregister",
+      "noMicrophone": "Pas de micro",
+      "talkNow": "Parlez maintenant",
+      "saveRecording": "Sauvegarder",
+      "recording": "Enregistrement",
+      "success": "Terminé"}</pre>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Events</h2>
+
+<p>Upload completion of a recording upload the recorder will fire an event called <code>recordingSaved</code> on the enclosing element (with id <code>recorder_XYZ</code>). This allows the application to react if needed. For instance, an event binder can be set with jQuery with</p>
+<pre>$("#recorder_XYZ").on("recordingSaved", function () { alert("it worked"); });</pre>
+
+<h2>Server-side code</h2>
+
+<p>This is a very simple PHP code snippet that saves the wav file sent.</p>
+
+<pre>
+    $save_folder = $_POST['upload_dir'];
+    $uploadedFile = $_FILES["uploadfile"];
+    $tmp_name = $uploadedFile["tmp_name"]['filename'];
+    $upload_name = $uploadedFile["name"]['filename'];
+    move_uploaded_file($tmp_name, $save_folder."audio.wav");
+</pre>
+
+<hr/>
+Max Froumentin<br/>
+Last modified: $Date: 2013-04-01 10:49:56 +0100 (Mon, 01 Apr 2013) $
+
+  </body>
+</html>

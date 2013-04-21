@@ -1,0 +1,24 @@
+Testing the application
+
+This directory contains a framework for testing the application.
+
+What is tested: The tests makes request to the application's VoiceXML
+files, just like a voice browser would.  It does so in a variety of
+contexts (for instance, when the user exists in the database or
+not), and with various parameters (callerId)
+
+Errors are reported if:
+       - there was an error fetching the voicexml file
+       - the voicexml file is not valid voicexml 2.1 (as per the RelaxNG schema passed)
+
+Errors that are not reported:
+       - any runtime error during the execution of the fetched VoiceXML file by the voice browser.
+       This would require having access to the browser's logs, and being able to simulate voice calls.
+
+Usage:
+        In a terminal, go to this directory and type run.sh
+        Upon success the script eventually outputs: "Running tests....... Success!"
+        Otherwise it prints details on the error.
+
+
+  

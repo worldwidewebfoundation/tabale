@@ -1,0 +1,14 @@
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
+  <var name="meetingUserId" expr="'9'"/>
+  <form>
+    <block>
+      <var name="action" expr="'record_message_from_outgoing_call'"/>
+      <var name="filename" expr="'media/message-meeting-9.wav'"/>
+      <var name="format" expr="'xml'"/>
+      <data src="../model/" method="post" namelist="action filename format meetingUserId"/>
+
+      <goto next='inbound-events.vxml.php#form2?userId=&amp;lang=fr'/>
+    </block>
+  </form>
+</vxml>
+

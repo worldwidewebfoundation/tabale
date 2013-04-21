@@ -1,0 +1,45 @@
+body { font-family: sans-serif; }
+
+table { margin-bottom: .5em;  }
+
+#meetings_table, #users_table { width: 100% }
+
+#logo { position: absolute; top: -2px; right: -15px; z-index: 10 }
+
+#message { padding: .5em; position: absolute; top: 200px; left: 30%; background-color: yellow; display:none; z-index: 10; font-size: 200% }
+
+.language_meeting_add, .meeting_user_add { font-size: 70%; }
+
+.main-column { font-weight: bolder; font-size: 150%; }
+
+.ui-button-text { padding: 0 .2em 0 .2em !important; }
+
+.add_button { background-color: #9f9; margin-top: 1em }
+
+.new_meeting_language_warning:after { content: "⚠"; color: red }
+
+.meeting_languages { padding-left: 0; list-style-type: none }
+
+#new_meeting_table td { padding-right: 2em; vertical-align: top }
+
+input { margin-bottom: 5px; }
+
+#userlog { border: 1px solid black; margin: 1em; padding: .5em }
+
+#newUserSortedLanguages { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#newUserSortedLanguages li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1em; height: 18px; }
+#newUserSortedLanguages li span { position: absolute; margin-left: -1.3em; }
+
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.uploaded { background-color: green; }
+.notUploadedYet { background-color: yellow; }
+
+.hidden { visibility: hidden; }

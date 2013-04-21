@@ -1,0 +1,17 @@
+<gg>
+<div id='control_panel_bmq'>
+  <input type='button' id='record_button_bmq' value='enregistrer'/>
+  <input type='button' id='play_button_bmq' value='entendre'/>
+</div>
+<span id='save_button_bmq'>
+  <span id='flashcontent_bmq'>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</span>
+</span>
+<div id='upload_status_bmq'></div>
+<div id='status_bmq'>Recorder Status...</div>
+<div>Activity Level: <span id='activity_level_bmq'></span></div>
+<form id='uploadForm_bmq' name='uploadForm' action='api.php?action=upload_wav&amp;upload_dir=media'>
+  <input name='authenticity_token' value='xxxxx' type='hidden'/>
+  <input name='upload_file[parent_id]' value='1' type='hidden'/>
+  <input name='format' value='json' type='hidden'/>
+</form>
+</gg>

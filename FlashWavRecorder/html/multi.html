@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>My Recorder</title>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js'></script>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/recorders.js"></script>
+
+
+<style>
+#control_panel { white-space: nowrap; }
+#control_panel a { outline: none; display: inline-block; width: 24px; height: 24px; }
+#control_panel a img { border: 0; }
+#save_button { position: absolute; padding: 0; margin: 0; }
+#play_button { display: inline-block; }
+</style>
+</head>
+
+<body>
+
+  <div id="recorder_fre"></div>
+  <div id="recorder_eng"></div>
+
+
+<script type="text/javascript">
+var recorder_fre = new Recorder("fre", "upload.php");
+var recorder_eng = new Recorder("eng", "upload.php");
+</script>
+
+</body>
+</html>
+
+
