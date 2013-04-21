@@ -1,7 +1,6 @@
 #!/bin/bash
-APPLICATION_BASEURI=http://localhost/emerginov/VOICES_VMEETUP/trunk/web/ivr
-#APPLICATION_BASEURI=https://public.webfoundation.org/AJVoices/ivr
-MODEL_BASEURI=https://public.webfoundation.org/ajv_plt/rest/api.php
+APPLICATION_BASEURI=http://example.com/tabale/ivr
+MODEL_BASEURI=http://example.org/tabale/model/index.php
 
 ##### FUNCTIONS ##################################################
 function fetch_and_validate {
